@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
-const TodoSchema = new mongoose.Schema({
-  todo: {
+const ItemSchema = new mongoose.Schema({
+  item: {
     type: String,
     required: true,
   },
-  completed: {
-    type: Boolean,
+  itemPrice:{
+    type: Number,
     required: true,
   },
   userId: {
@@ -15,4 +15,5 @@ const TodoSchema = new mongoose.Schema({
   }
 })
 
-module.exports = mongoose.model('Todo', TodoSchema)
+
+module.exports = mongoose.model('Item', ItemSchema)
