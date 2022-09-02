@@ -1,20 +1,22 @@
 const Item = require('../models/Item')
+const Budget = require('../models/Budget')
 
 module.exports = {
     getItems: async (req,res)=>{
         console.log(req.user)
         try{
             const items = await Item.find({userId:req.user.id})
-            res.render('items.ejs', {items: items, left: itemsLeft, user: req.user})
+            const budget = await Budget.findOne({userId:req.user.id})
+            res.render('items.ejs', {items: items, budget: budget, user: req.user})
         }catch(err){
             console.log(err)
         }
     },
     createItem: async (req, res)=>{
         try{
-            await Item.create({item: req.body.Item, completed: false, userId: req.user.id})
+            await Item.create({item: req.body.item, itemPrice: req.body.itemPrice, userId: req.user.id})
             console.log('Item has been added!')
-            res.redirect('/item')
+            res.redirect('/items')
         }catch(err){
             console.log(err)
         }
