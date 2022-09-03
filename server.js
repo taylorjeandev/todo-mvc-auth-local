@@ -1,5 +1,5 @@
 const express = require('express')
-const app = express()
+let app = express();
 const mongoose = require('mongoose')
 const passport = require('passport')
 const session = require('express-session')
@@ -9,6 +9,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const itemRoutes = require('./routes/items')
+const budgetRoutes = require('./routes/budget')
 
 require('dotenv').config({path: './config/.env'})
 
@@ -40,6 +41,7 @@ app.use(flash())
   
 app.use('/', mainRoutes)
 app.use('/items', itemRoutes)
+app.use('/budgets', budgetRoutes)
  
 app.listen(process.env.PORT, ()=>{
     console.log('Server is running, you better catch it!')

@@ -10,13 +10,19 @@
 <body>
     <h1>Items</h1>
     <ul>
-    <% items.forEach( el => { %>
+        <li>
+            <h4>Budget: <%= budget?.totalBudget || 0 %></h4>
+        </li>
+    <% items.forEach( el => { %> 
             <li class='item' data-id='<%=el._id%>'>
-                <span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.item %></span>
+                <span> <%= el.item %></span>
                 <span><%= el.itemPrice %></span>
                 <span class='del'> Delete </span>
             </li>
-    <% }) %>    
+    <% }) %>
+            <li>
+                <h4>total sum: <%= sum %></h4>
+            </li>
     </ul>
 
     <h2><%= user.userName %></h2>
@@ -24,6 +30,11 @@
     <form action="/items/createItem" method='POST'>
         <input type="text" placeholder="Enter Item" name='item'>
         <input type="text" placeholder="Enter Price" name='itemPrice'>
+        <input type="submit">
+    </form>
+
+    <form action="/budgets/createBudget" method='POST'>
+        <input type="text" placeholder="Enter Budget" name='totalBudget'>
         <input type="submit">
     </form>
 

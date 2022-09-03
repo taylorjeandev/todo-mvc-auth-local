@@ -1,6 +1,7 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
+const Budget = require('../models/Budget')
 
  exports.getLogin = (req, res) => {
     if (req.user) {
@@ -77,12 +78,20 @@ const User = require('../models/User')
     User.findOne({$or: [
       {email: req.body.email},
       {userName: req.body.userName}
-    ]}, (err, existingUser) => {
+    ]}, async (err, existingUser) => {
       if (err) { return next(err) }
       if (existingUser) {
         req.flash('errors', { msg: 'Account with that email address or username already exists.' })
         return res.redirect('../signup')
       }
+
+      try{
+          await Budget.create({totalBudget: 0, userId: user.id})
+          console.log('Budget has been added!')
+      }catch(err){
+          console.log(err)
+      }
+
       user.save((err) => {
         if (err) { return next(err) }
         req.logIn(user, (err) => {

@@ -7,7 +7,14 @@ module.exports = {
         try{
             const items = await Item.find({userId:req.user.id})
             const budget = await Budget.findOne({userId:req.user.id})
-            res.render('items.ejs', {items: items, budget: budget, user: req.user})
+
+            let itemPrices = [];
+            for(let i = 0; i < items.length; i++){
+                itemPrices.push(items[i].itemPrice)
+            }
+            let sum = (itemPrices.reduce((acc, c) => acc + c, 0));
+
+            res.render('items.ejs', {items: items, budget: budget, sum: sum, user: req.user})
         }catch(err){
             console.log(err)
         }
