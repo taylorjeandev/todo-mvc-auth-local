@@ -1,10 +1,10 @@
 const Budget = require('../models/Budget')
 
 module.exports = {
-    createBudget: async (req, res)=>{
+    updateBudget: async (req, res)=>{
         try{
-            await Budget.create({totalBudget: req.body.totalBudget, userId: req.user.id})
-            console.log('Budget has been added!')
+            await Budget.updateOne({userId: req.user.id}, {totalBudget: req.body.totalBudget})
+            console.log('Budget has been updated!')
             res.redirect('/items')
         }catch(err){
             console.log(err)

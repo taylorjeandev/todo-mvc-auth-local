@@ -13,8 +13,9 @@ module.exports = {
                 itemPrices.push(items[i].itemPrice)
             }
             let sum = (itemPrices.reduce((acc, c) => acc + c, 0));
+            let remainder = budget.totalBudget - sum;
 
-            res.render('items.ejs', {items: items, budget: budget, sum: sum, user: req.user})
+            res.render('items.ejs', {remainder: remainder, items: items, budget: budget, sum: sum, user: req.user})
         }catch(err){
             console.log(err)
         }

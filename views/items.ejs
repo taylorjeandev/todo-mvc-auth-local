@@ -11,7 +11,16 @@
     <h1>Items</h1>
     <ul>
         <li>
-            <h4>Budget: <%= budget?.totalBudget || 0 %></h4>
+            <% if (budget.totalBudget < 1) {%>
+                Please specify your budget
+            <% } else { %>
+                <h4>Budget: <%= budget.totalBudget %></h4>
+            <% } %>
+
+            <form action="/budgets/updateBudget" method='POST'>
+                <input type="text" placeholder="<%= budget.totalBudget < 1 ? "Enter Initial Budget" : "Enter New Budget"%>" name='totalBudget'>
+                <input type="submit" value="Set">
+            </form>
         </li>
     <% items.forEach( el => { %> 
             <li class='item' data-id='<%=el._id%>'>
@@ -19,9 +28,12 @@
                 <span><%= el.itemPrice %></span>
                 <span class='del'> Delete </span>
             </li>
-    <% }) %>
+    <% }) %>    
             <li>
                 <h4>total sum: <%= sum %></h4>
+                <h4 class='<%= sum > budget.totalBudget ? 'overBudget' : 'underBudget'%>'>
+                    <%= sum > budget.totalBudget ? 'YOURE OVER BUDGET!!!!' : 'Remainder:'%> <%= remainder %>
+                </h4>
             </li>
     </ul>
 
@@ -30,11 +42,6 @@
     <form action="/items/createItem" method='POST'>
         <input type="text" placeholder="Enter Item" name='item'>
         <input type="text" placeholder="Enter Price" name='itemPrice'>
-        <input type="submit">
-    </form>
-
-    <form action="/budgets/createBudget" method='POST'>
-        <input type="text" placeholder="Enter Budget" name='totalBudget'>
         <input type="submit">
     </form>
 
