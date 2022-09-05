@@ -1,4 +1,4 @@
-const deleteBtn = document.querySelectorAll('.del')
+const deleteBtn = document.querySelectorAll('.lnr-trash')
 
 Array.from(deleteBtn).forEach((el)=>{
     el.addEventListener('click', deleteItem)
@@ -6,7 +6,7 @@ Array.from(deleteBtn).forEach((el)=>{
 
 
 async function deleteItem(){
-    const itemId = this.parentNode.dataset.id
+    const itemId = this.parentNode.parentNode.parentNode.parentNode.parentNode.dataset.id
     try{
         const response = await fetch('items/deleteItem', {
             method: 'delete',

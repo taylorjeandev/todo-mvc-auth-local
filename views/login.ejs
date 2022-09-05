@@ -1,26 +1,112 @@
 <!DOCTYPE html>
+<!--
+	Resto by GetTemplates.co
+	URL: https://gettemplates.co
+-->
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Budget App</title>
+    <meta name="description" content="Resto">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/select2/select2.min.css">
+    <link rel="stylesheet" href="vendor/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/brands.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700|Josefin+Sans:300,400,700">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.min.css">
+
+    <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+
 </head>
-<body>
-    <% if (locals.messages.errors) { %>
-        <% messages.errors.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %>    
-    <% } %>
-    <% if (locals.messages.info) { %>
-        <% messages.info.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %>    
-    <% } %>
-    <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit">
-    </form>
+<body data-spy="scroll" data-target="#navbar">
+	<div id="canvas-overlay"></div>
+	<div class="boxed-page">
+		<nav id="navbar-header" class="navbar navbar-expand-lg">
+    <div class="container">
+        <img class="navbar-brand navbar-brand-center d-flex align-items-center p-0 only-mobile" src="img/costcash2.svg" alt="">
+        
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+           
+            
+            <a class="navbar-brand navbar-brand-center d-flex align-items-center only-desktop" href="/">
+                <img id="costCashTwo" src="img/costcash2.svg" alt="">
+            </a>
+            <ul class="navbar-nav d-flex justify-content-between">
+            </ul>
+        </div>
+    </div>
+</nav>		<!-- Reservation Section -->
+<% if (locals.messages.errors) { %>
+    <% messages.errors.forEach( (el, i) => { %>
+        <div style="top: <%= 1+i*4 %>rem;" class="alert alert-danger"><%= el.msg %></div>
+    <% }) %>    
+<% } %>
+<% if (locals.messages.success) { %>
+    <% messages.success.forEach( (el, i) => { %>
+        <div style="top: <%= 1+i*4 %>rem;" class="alert alert-success"><%= el.msg %></div>
+    <% }) %>    
+<% } %>
+<section id="gtco-reservation" class="bg-fixed bg-white section-padding overlay" style="background-image: url(img/background.jpg); background-repeat: no-repeat; background-position: center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-content bg-white p-5 shadow">
+                    <div class="heading-section text-center">
+                        <h2>
+                            Login
+                        </h2>
+                    </div>
+                    <form method="POST" name="contact-us" action="/login">
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary btn-shadow btn-lg" type="submit" name="submit">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+    
+</div>
+	
+</div>
+	<!-- External JS -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+	<script src="vendor/bootstrap/popper.min.js"></script>
+	<script src="vendor/bootstrap/bootstrap.min.js"></script>
+	<script src="vendor/select2/select2.min.js "></script>
+	<script src="vendor/owlcarousel/owl.carousel.min.js"></script>
+	<script src="https://cdn.rawgit.com/noelboss/featherlight/1.7.13/release/featherlight.min.js"></script>
+	<script src="vendor/stellar/jquery.stellar.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+
+	<!-- Main JS -->
+	<script src="js/app.min.js "></script>
 </body>
 </html>
