@@ -1,12 +1,12 @@
-const express = require('express')
+const express = require("express");
 const router = express.Router();
-const itemsController = require('../controllers/items') 
-const { ensureAuth } = require('../middleware/auth')
+const itemsController = require("../controllers/items");
+const { ensureAuth } = require("../middleware/auth");
 
-router.get('/', ensureAuth, itemsController.getItems)
+router.get("/", ensureAuth, itemsController.getItems);
 
-router.post('/createItem', itemsController.createItem)
+router.post("/createItem", itemsController.createItem);
 
-router.delete('/deleteItem', itemsController.deleteItem)
+router.delete("/deleteItem", itemsController.deleteItem);
 
-module.exports = router
+module.exports = router;

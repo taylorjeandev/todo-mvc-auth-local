@@ -1,15 +1,13 @@
-h1{
-    color: purple;
-    font-size: 3rem;
+h1 {
+  color: purple;
+  font-size: 3rem;
 }
 
-.overBudget{
-    color: red;
-    font-size: 3rem;
+.overBudget {
+  color: red;
+  font-size: 3rem;
 }
 
-
-
-.underBudget{
-    color: black;
+.underBudget {
+  color: black;
 }
